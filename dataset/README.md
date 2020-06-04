@@ -4,7 +4,7 @@ The X-Ray image for COVID-19 is collected from multiple emerging open sources re
 
 
 ## Datasets:
-The required data has been procured from the following sources: \
+Users can download data from various emerging open source COVID-19 X-Ray image repositoris or use propreitory datsets from Hospitals. In our work we have accessed the COVID-19 X-Ray images from the following sources: \
 1) Pneumonia - https://www.kaggle.com/c/rsna-pneumonia-detection-challenge \
 2) COVID-19 - https://github.com/ieee8023/covid-chestxray-dataset \
 3) COVID-19 - https://github.com/agchung/Figure1-COVID-chestxray-dataset \
@@ -16,6 +16,10 @@ Create the following directories: ./src, ./input and ./output and run the follow
 * `git clone https://github.com/ieee8023/covid-chestxray-dataset.git`
 * `git clone https://github.com/agchung/Figure1-COVID-chestxray-dataset.git`
 * `git clone https://github.com/agchung/Actualmed-COVID-chestxray-dataset.git` 
+
+### Download the following datasets using the links:
+* [COVID-19 Radiography database](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database) to download the COVID-19 Radiography database. Only the COVID-19 image folder and metadata file is required. 
+* [RSNA Pneumonia Dataset](https://www.kaggle.com/c/rsna-pneumonia-detection-challenge/data)
 
 ### Copy the following files int ./src folder:
 * Copy this [code](./codes/rsna_data_preparation.ipynb) into ./src/ for allocating the rsna dataset.

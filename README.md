@@ -66,7 +66,7 @@ The data distribution for NORMAL, PNEUMONIA and COVID cases used for COVID model
 ```text
 RSNA              NORMAL      PNEUMONIA    COVID
 ===================================================
-train             7965        5410         297
+train             7080        4809         260
 test              885         601          100
 val               885         601          100
 ```

@@ -18,7 +18,7 @@ Coronavirus or COVID-19 Pandemic is an extraorinary Emergency Healthcare crisis 
 We have developed a smart and scalable solution for Pneumonia and COVID-19 prediction system using [Vitis-AI](https://developer.xilinx.com/en/get-started/ai.html) and [AWS-IoT GreenGrass](https://aws.amazon.com/greengrass/) with Xilinx [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) FPGA board as the Edge Device. This makes the soution highly scalable, extremely cheaper and mobile suitable for using in any Hospitals, Ambluance or Hospital-in-Wheels. However, our solution is not a production ready solution, it primarily meant for helping Healthcare researcher to develop a radiology flow for better and seamless diagnosis of COVID-19.
 
 ```text
-We have provided two sets Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Ray imaging. 
+We have provided two sets of Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Rays. 
 Two custom CNNs for Pneumonia Detection:
   1) Pnem1 - Pneumonia Detection model for 150x150 image dimension 
   2) Pnem2 - Pneumonia Detection model for 224x224 image dimension 

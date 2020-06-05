@@ -48,6 +48,38 @@ which contains a pre-built working design for the ZCU104 with the [DPU-v2](https
 - Familiarity with Quantization of Deep Learning Models. 
 - Familiarity with Compiled Model for running in [DPU](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD).
 
+
+### Install Missing Packages on the Vitis AI Tools Container
+
+This application requires some packages that were not included in the VAI tools container. OpenCV >= 4.0 requires only if users want to display the Heatmaps presented in COVID_demo folder. 
+Here are the steps following [Vitis-AI](https://github.com/Xilinx/Vitis-AI) to include such packages:
+```bash
+./docker_run.sh xilinx/vitis-ai-gpu:latest # enter into the docker VAI tools image
+sudo su # you must be root
+conda activate vitis-ai-tensorflow # as root, enter into Vitis AI TF (anaconda-based) virtual environment
+conda install -c conda-forge pydicom
+conda install -c anaconda xlrd
+conda deactivate
+exit # to exit from root
+conda activate vitis-ai-tensorflow # as normal user, enter into Vitis AI TF (anaconda-based) virtual environment
+```
+Note that if you exit from the current Docker Vitis AI tools image you will lose all the installed packages, so to save all changes in a new docker image open a new terminal and run the following commands:
+
+```bash
+sudo docker ps -l # To get the Docker CONTAINER ID
+```
+you will see the following text (the container ID might have a different number):
+```text
+CONTAINER ID        IMAGE                        COMMAND                CREATED             STATUS              PORTS               NAMES
+7f865e2ddd33        xilinx/vitis-ai-gpu:latest   "/etc/login.sh bash"   something           something                          ecstatic_kirch
+```
+now save the modified docker image:
+```bash
+sudo docker commit -m "new image: added pydicom and xlrd used in data generation" \
+        7f865e2ddd33        xilinx/vitis-ai-gpu:latest
+```
+
+
 # Pneumonia and COVID dataset Preparation
 
 Organize the data into folders, such as ``train`` for training, ``val`` for validation during the training phase, ``test`` for testing during the inference/prediction phase, and ``cal`` for calibration during the quantization phase, for each dataset. The ./dataset/Pneumonia/ contains the training data for Pneumonia Combined with COVID dataset, Calibration dataset for Quantization process. The details of generating dataset for training Pneumonia and COVID models are presented [here](./dataset/README.md).

@@ -21,10 +21,6 @@ Create the following directories: ./src, ./input and ./output and run the follow
 * [COVID-19 Radiography database](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database) to download the COVID-19 Radiography database. Only the COVID-19 image folder and metadata file is required. 
 * [RSNA Pneumonia Dataset](https://www.kaggle.com/c/rsna-pneumonia-detection-challenge/data)
 
-### Copy the following files int ./src folder:
-* Copy this [code](./codes/rsna_data_preparation.ipynb) into ./src/ for allocating the rsna dataset.
-* Copy this [code](./codes/covid_data_preparation.ipynb) into ./src/  for integrating the COVID datset with rsna.
-
 ### The ./input folder can be seen
 This is how the data needs to be arranged in the input directory before *.ipynb code from src directory is run:
 ## Project folder/
@@ -39,6 +35,13 @@ This is how the data needs to be arranged in the input directory before *.ipynb 
       * covid19-radiography-database
       * covid-chestxray-dataset 
 
-## Run the ipynb files to create the dataset for Pneumonia Models Training and COVID Models Training
-* Run this [code](./codes/rsna_data_preparation.ipynb) into ./src/ for allocating the rsna dataset.
-* Run this [code](./codes/covid_data_preparation.ipynb) into ./src/  for integrating the COVID datset with rsna.
+## Run the ipynb files to create the 'rsna_data' dataset for Pneumonia Models Training and 'covid_data' for COVID Models Training
+* Run this ./codes/rsna_data_preparation.ipynb into for creating the rsna dataset.
+* Run this ./codes/covid_data_preparation.ipynb into for creating the COVID data and create symlink of NORMAL and PNEUMONIA data from 'rsna_data'.
+
+
+The 'input' directory tree is shown below:
+<div align="left">
+  <img width="20%" height="20%" src="../doc/snaps/input_dir_treeL2.png">
+</div>
+

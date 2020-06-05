@@ -8,7 +8,7 @@ The steps to install the OpenCV >=4.0 is given below:
 ./docker_run.sh xilinx/vitis-ai-gpu:latest # enter into the docker VAI tools image
 sudo su # you must be root
 conda activate vitis-ai-tensorflow # as root, enter into Vitis AI TF (anaconda-based) virtual environment
-conda uninstall OpenCV 
+conda uninstall opencv 
 conda install -c conda-forge opencv   #This will install OpenCV >= 4.0
 conda deactivate
 exit # to exit from root

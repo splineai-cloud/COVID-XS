@@ -41,7 +41,7 @@ The Pneumonia and COVID-19 detection models uses the input images of dimension 1
 
 - Vitis AI Evaluation board [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) with [ZCU104 PYNQ 2.5 image file](http://www.pynq.io/board.html)
 which contains a pre-built working design for the ZCU104 with the [DPU-v2](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD).
-- Once the base PYNQ Linux image is installed, the user to follow the [AWS IoT Greengrass Getting started Guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) for details for integration with device
+- Once the base PYNQ Linux image is installed, the user to follow the [AWS IoT Greengrass Getting started Guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) for details for integration with Edge Device.
 
 - Familiarity with CNN and Deep Learning principles.
 - Familiarity with Quantization of Deep Learning Models. 
@@ -237,7 +237,7 @@ We have developed the four Pneumonia and COVID prediction Deep Learning models w
 
 
 ## IoT GreenGrass Integration for Deployment with ZCU104 as Edge Device
-The guide to integrate ZCU104 as Edge Device is available [here [https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html)
+To integrate ZCU104 as Edge Device this [guide] (https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) to be followed.
 
 
 

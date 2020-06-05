@@ -41,6 +41,7 @@ The Pneumonia and COVID-19 detection models uses the input images of dimension 1
 
 - Vitis AI Evaluation board [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) with [ZCU104 PYNQ 2.5 image file](http://www.pynq.io/board.html)
 which contains a pre-built working design for the ZCU104 with the [DPU-v2](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD).
+- Once the base PYNQ Linux image is installed, the user to follow the [AWS IoT Greengrass Getting started Guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) for details for integration with device
 
 - Familiarity with CNN and Deep Learning principles.
 - Familiarity with Quantization of Deep Learning Models. 
@@ -231,12 +232,12 @@ weighted avg       0.91         0.90      0.91       1588
 
 We have developed the four Pneumonia and COVID prediction Deep Learning models with incredibly high Accuracy and Precision. The parameter size of the models are around 34M and can be easily compiled for ZCU104 FPGA. The Compiled models for ZCU104 also maintains the similar performance shown in Host. We have tested the performance of the models Pnem1-4 in DPU. The demo ipynb files to test the models are presented in the folder [COVID_DPU_demo](./COVID_DPU_demo/README.md)
 
-# IoT GreenGrass Integration for Training using SageMaker Neo
+## IoT GreenGrass Integration for Training using SageMaker Neo
+[SageMakeNeo](https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html) and VitisAI integration will enable user to easily train the Deep Learning Models and seemlesly deploy the trained models to the ZCU104 Edge Device. 
 
 
-
-# IoT GreenGrass Integration for Deployment with ZCU104 as Edge Device
-
+## IoT GreenGrass Integration for Deployment with ZCU104 as Edge Device
+The guide to integrate ZCU104 as Edge Device is available [here [https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html)
 
 
 

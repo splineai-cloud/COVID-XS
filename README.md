@@ -19,11 +19,11 @@ We have developed a smart and scalable solution for Pneumonia and COVID-19 predi
 
 We have provided two sets Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Ray imaging. 
 - two custom CNNs for Pneumonia Detection: \
-1) Pnem1 - Pneumonia Detection model for 150x150 image dimension \
-2) Pnem2 - Pneumonia Detection model for 224x224 image dimension 
+  1) Pnem1 - Pneumonia Detection model for 150x150 image dimension 
+  2) Pnem2 - Pneumonia Detection model for 224x224 image dimension 
 - two custom CNNs for COVID-19 Detection:  \
-3) Pnem3 - COVID-19 Detection model for 150x150 image dimension \
-4) Pnem4 - COVID-19 Detection model for 224x224 image dimension 
+  3) Pnem3 - COVID-19 Detection model for 150x150 image dimension 
+  4) Pnem4 - COVID-19 Detection model for 224x224 image dimension 
 
 The Pneumonia and COVID-19 detection models uses the input images of dimension 150x150 and 224x224. The following figurre shows the prediction output from the two Deep Learning models:
 

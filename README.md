@@ -11,9 +11,9 @@
   <img width="20%" height="20%" src="./doc/snaps/SPLINE_LOGO.png">
 </div>
 
-######  **Author**: Syed Hussain (hsyed@spline.ai)
-######  **SplineAI Tech Private Ltd (https://www.spline.ai)**
-######  **Date**:   01 June 2020
+**Author**: Syed Hussain (hsyed@spline.ai)\
+**SplineAI Tech Private Ltd (https://www.spline.ai)**\
+**Date**:   01 June 2020
 
 # Introduction
 

@@ -13,7 +13,7 @@
 
 **Author**: Syed Hussain (hsyed@spline.ai)\
 **SplineAI Tech Private Ltd (https://www.spline.ai)**\
-**Date**:   01 June 2020
+**Date**:   01 June 2020\
 
 # Introduction
 

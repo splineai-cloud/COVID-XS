@@ -12,14 +12,14 @@
 </div>
 
 **Author**: Syed Hussain (hsyed@spline.ai)\
-**SplineAI Tech Private Ltd (https://www.spline.ai)**\
-**Date**:   01 June 2020\
+**SplineAI Tech Private Ltd** (https://www.spline.ai) \
+**Date**: 01 June 2020
 
 # Introduction
 
-Coronavirus or COVID-19 Pandemic is an extraorinary Emergency Healthcare crisis in recent time with growing numbers of fataliies, expected to touch half a million deaths by Jun 2020. Currently, the widely used test method to detect COVID-19 is RT-PCR or Real-Time Polymerase Chain Reaction. Although, RT-PCR is a standard diagnostic techniques, it also has many draw backs. RT_PCR has shown high-rates of false negatives, its prcoess is time consuming and costly. During this crisis, from many experiments it has been found that Pneumonia and COVID-19 infection detection from the imaging e.g. CT Scan and X-Ray is very effective and produce greater insights. However, compared to CT Scan or Computed Tomography the use of Chest X-Ray imaging is much cheaper and less time consuming. 
+Coronavirus or COVID-19 Pandemic is an extraordinary Emergency Healthcare crisis in recent time with growing numbers of fatalities, expected to touch half a million deaths by Jun 2020. Currently, the widely used test method to detect COVID-19 is RT-PCR or Real-Time Polymerase Chain Reaction. Although RT-PCR is a standard diagnostic technique, it also has many drawbacks. RT_PCR has shown high-rates of false negatives, its process is time-consuming and costly. During this crisis, from many experiments, it has been found that Pneumonia and COVID-19 infection detection from the imaging e.g. CT Scan and X-Ray is very effective and produces greater insights. However, compared to CT Scan or Computed Tomography the use of Chest X-Ray imaging is much cheaper and less efficient. 
 
-We have developed a smart and scalable solution for Pneumonia and COVID-19 prediction system using [Vitis-AI](https://developer.xilinx.com/en/get-started/ai.html) and [AWS-IoT GreenGrass](https://aws.amazon.com/greengrass/) with Xilinx [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) FPGA board as the Edge Device. This makes the soution highly scalable, extremely cheaper and mobile suitable for using in any Hospitals, Ambluance or Hospital-in-Wheels. However, our solution is not a production ready solution, it primarily meant for helping Healthcare researcher to develop a radiology flow for better and seamless diagnosis of COVID-19.
+We have developed a smart and scalable solution for Pneumonia and COVID-19 prediction system using [Vitis-AI](https://developer.xilinx.com/en/get-started/ai.html) and [AWS-IoT GreenGrass](https://aws.amazon.com/greengrass/) with Xilinx [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) FPGA board as the Edge Device. This makes the solution highly scalable, extremely cheaper and mobile suitable for use in any Hospitals, Ambulance or Hospital-in-Wheels. However, our solution is not a production-ready solution, it primarily meant for helping Healthcare researchers to develop a radiology flow for better and seamless diagnosis of COVID-19.
 
 We have provided two sets of Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Rays. 
   1) Pnem1 - Pneumonia Detection model for 150x150 image dimension 
@@ -83,10 +83,10 @@ sudo docker commit -m "new image: added pydicom and xlrd used in data generation
 ```
 
 
-# Pneumonia and COVID dataset Preparation
+# Pneumonia and COVID dataset preparation
 
-Organize the data into folders, such as ``train`` for training, ``val`` for validation during the training phase, ``test`` for testing during the inference/prediction phase, and ``cal`` for calibration during the quantization phase, for each dataset. The ./dataset/Pneumonia/ contains the training data for Pneumonia Combined with COVID dataset, Calibration dataset for Quantization process. The details of generating dataset for training Pneumonia and COVID models are presented [here](./dataset/README.md).
-From the list of open source COVID-19 datsets we found nearly 400 unique X-Ray images after removing the duplicate entries. 
+Organize the data into folders, such as ``train`` for training, ``val`` for validation during the training phase, ``test`` for testing during the inference/prediction phase, and ``cal`` for calibration during the quantization phase, for each dataset. The ./dataset/Pneumonia/ contains the training data for Pneumonia Combined with COVID dataset, Calibration dataset for Quantization process. The details of generating the dataset for training Pneumonia and COVID models are presented [here](./dataset/README.md).
+From the list of open source COVID-19 datasets we found nearly 400 unique X-Ray images after removing the duplicate entries. 
 
 The data distribution for NORMAL and PNEUMONIA used for Pneumonia model Pnem1 and Pnem2 training:
 ```text
@@ -108,10 +108,10 @@ val               885         601          100
 
 # The Main Flow
 
-The main flow is consists of seven steps. The first five steps are executed from the Vitis-AI 1.1 tools container on the host PC by launching the five scripts with prefixed 1 to 5 or running a single script [run_all.sh](./run_all.sh). The 6th step to be done on the target ZCU104 board with reinstalled PYNQ image.
-Details of the steps are biven below:
+The main flow is consists of seven steps. The first five steps are executed from the Vitis-AI 1.1 tools container on the host PC by launching the five scripts with prefixed 1 to 5 or running a single script [run_all.sh](./run_all.sh). The 6th step to be done on the target ZCU104 board with pre-installed PYNQ image.
+Details of the steps are given below:
 
-1. Train the Keras CNNs Models for Pnumonia to generate the HDF5 weights. Run this command on the Vitis-AI container:
+1. Train the Keras CNNs Models for Pneumonia to generate the HDF5 weights. Run this command on the Vitis-AI container:
 ```
 source ./1_Pneumonia_train.sh  #For traing the two Pneumonia models Pnem1 and Pnem2
 source ./1_COVID_train.sh  #For traing the two COVID models Pnem3 and Pnem4. 
@@ -139,14 +139,14 @@ source ./4b_evaluate_quantized_graph.sh
 source ./5_compile.sh 
 ```
 
-6. Copy the generated elf file into the [./COVID_DPU_demo/models] directory. Copy the COVID_DPU_demo dircetory Use the ``elf`` file on the ZCU104 target board to measure the fps and .   From the target board, run the following command:
+6. Copy the generated elf file into the [./COVID_DPU_demo/models] directory. Copy the COVID_DPU_demo directory. Use the generated ``elf`` file on the ZCU104 target board to measure the fps and accuracy. From the target board, run the following command:
 ```
 source ./copy_elfs.sh   #To copy the Model elfs file in the directory ./COVID_DPU_demo/models
 scp -r COVID_demo xilinx@<IP-of-the-ZCU104-Board>:/home/xilinx/jupyter_notebooks/pynq-dpu/
 ```
 
 # Pneumonia and COVID-19 Models 
-We have trained the Pneumonia model Pnem1 and Pnem2 for 300 epochs using batch size 64. We used the AWS instance p3.x2large machine for training the models. The accuracy of Pneumonia prediction for both the models are > 94%. The Classification reports and Confusion matrix of the models are shown below:
+We have trained the Pneumonia model Pnem1 and Pnem2 for 300 epochs using batch size 64. We used the AWS instance p3.x2large machine for training the models. The accuracy of Pneumonia prediction for both the models is > 94%. The Classification reports and Confusion matrix of the models are shown below:
 
 ### 1. Performance of the model [Pnem1](./doc/images/bd_Pnem1.png)  
 Pneumonia prediction Model with input dimension 150x150
@@ -234,10 +234,10 @@ weighted avg       0.91         0.90      0.91       1588
   <img width="45%" height="45%" src="./doc/snaps/cf4.png">
 </div>
 
-We have developed the four Pneumonia and COVID prediction Deep Learning models with incredibly high Accuracy and Precision. The parameter size of the models are around 34M and can be easily compiled for ZCU104 FPGA. The Compiled models for ZCU104 also maintains the similar performance shown in Host. We have tested the performance of the models Pnem1-4 in DPU. The demo ipynb files to test the models are presented in the folder [COVID_DPU_demo](./COVID_DPU_demo/README.md)
+We have developed the four Pneumonia and COVID prediction Deep Learning models with incredibly high Accuracy and Precision. The parameter size of the models is around 34M and can be easily compiled for ZCU104 FPGA. The Compiled models for ZCU104 also maintains a similar performance shown in Host. We have tested the performance of the models Pnem1-4 in DPU. The demo ipynb files to test the models are presented in the folder [COVID_DPU_demo](./COVID_DPU_demo/README.md)
 
 ## IoT GreenGrass Integration for Training using SageMaker Neo
-[SageMakeNeo](https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html) and VitisAI integration will enable user to easily train the Deep Learning Models and seemlesly deploy the trained models to the ZCU104 Edge Device. 
+[SageMakeNeo](https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html) and VitisAI integration will enable users to easily train the Deep Learning Models and seamlessly deploy the trained models to the ZCU104 Edge Device. 
 
 
 ## IoT GreenGrass Integration for Deployment with ZCU104 as Edge Device

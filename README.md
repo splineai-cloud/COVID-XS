@@ -21,11 +21,11 @@ Coronavirus or COVID-19 Pandemic is an extraordinary Emergency Healthcare crisis
 
 We have developed a smart and scalable solution for Pneumonia and COVID-19 prediction system using [Vitis-AI](https://developer.xilinx.com/en/get-started/ai.html) and [AWS-IoT GreenGrass](https://aws.amazon.com/greengrass/) with Xilinx [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) FPGA board as the Edge Device. This makes the solution highly scalable, extremely cheaper and mobile suitable for use in any Hospitals, Ambulance or Hospital-in-Wheels. However, our solution is not a production-ready solution, it primarily meant for helping Healthcare researchers to develop a radiology flow for better and seamless diagnosis of COVID-19.
 
-We have provided two sets of Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Rays. 
+We have provided two sets of Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Rays: 
   1) Pnem1 - Pneumonia Detection model for 150x150 image dimension 
   2) Pnem2 - Pneumonia Detection model for 224x224 image dimension 
-  3) Pnem3 - COVID-19 Detection model for 150x150 image dimension 
-  4) Pnem4 - COVID-19 Detection model for 224x224 image dimension 
+  3) Pnem3 - Pneumonia and COVID-19 Detection model for 150x150 image dimension 
+  4) Pnem4 - Pneumonia and COVID-19 Detection model for 224x224 image dimension 
 
 The Pneumonia and COVID-19 detection models uses the input images of dimension 150x150 and 224x224. The following figurre shows the prediction output from the two Deep Learning models:
 
@@ -44,7 +44,12 @@ The Pneumonia and COVID-19 detection models uses the input images of dimension 1
 - [Vitis AI stack release 1.1](https://github.com/Xilinx/Vitis-AI) from [www.github.com/Xilinx](https://www.github.com/Xilinx). In particular, refer to the [Vitis AI User Guide UG1414 v1.1](https://www.xilinx.com/support/documentation/sw_manuals/vitis_ai/1_1/ug1414-vitis-ai.pdf) for the installation guidelines and note that you need to download the two containers available from [docker hub](https://hub.docker.com/r/xilinx/vitis-ai/tags)
 
 - Vitis AI Evaluation board [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) with [ZCU104 PYNQ 2.5 image file](http://www.pynq.io/board.html)
-which contains a pre-built working design for the ZCU104 with the [DPU-v2](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD).
+which contains a pre-built working design for the ZCU104 with the [DPU-v2](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD). This pre-built pynq image requires manual upgrade folloing the instructions given [here](https://github.com/Xilinx/DPU-PYNQ/tree/master/upgrade). Users to follow the steps below:
+  * download the official 2.5 image.
+  * run the makefile as instructed in https://github.com/Xilinx/DPU-PYNQ#1-upgrading-the-pynq-v25-image
+  * pip install pynq-dpu as in https://github.com/Xilinx/DPU-PYNQ#2-install
+
+
 - Once the base PYNQ Linux image is installed, the user to follow the [AWS IoT Greengrass Getting started Guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) for details for integration with Edge Device.
 
 - Familiarity with CNN and Deep Learning principles.

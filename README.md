@@ -246,7 +246,7 @@ We have developed the four Pneumonia and COVID prediction Deep Learning models w
 
 
 ## IoT GreenGrass Integration for Deployment with ZCU104 as Edge Device
-To integrate ZCU104 as Edge Device this [guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) to be followed.
+To integrate ZCU104 as Edge Device for Prediction of Pneumonia/COVID-19 the [Getting Started Guide] (./DPU_Edge/README.md) may be followed. The detail guidance is available at [AWS Developers guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html).
 
 
 

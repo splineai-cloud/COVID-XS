@@ -23,8 +23,8 @@ my_counter = 0
 # Retrieving platform information to send from Greengrass Core
 my_platform = platform.platform()
 
-AWS_ACCESS_KEY_ID = "AKIAI5JWTITS3OXYGEJQ"
-AWS_SECRET_ACCESS_KEY = "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"
+AWS_ACCESS_KEY_ID = <aws-access-key-id>
+AWS_SECRET_ACCESS_KEY = <aws-secret-access-key>
 region="us-west-2"
 
 KERNEL_CONV = os.environ['KERNEL_CONV']                         #"Pnem1_0"  

@@ -150,7 +150,7 @@ Download and start the script. You can use wget or curl to download the script
 $wget -q -O ./gg-device-setup-latest.sh https://d1onfpft10uf5o.cloudfront.net/greengrass-device-setup/downloads/gg-device-setup-latest.sh && chmod +x ./gg-device-setup-latest.sh && sudo -E ./gg-device-setup-latest.sh bootstrap-greengrass-interactive
 ```
 
-This step requires the following inputs: AWS access key ID, AWS secret access key and AWS session token. Here, the user need to press "Enter" to allow the default information as inputs. The other two important information are Greengrass Group name and Greengrass Core name. For example, user can choose the names as 'GreenGrass_pynq_Group' and 'GreenGrass_pynq_Core'. The following picture shows the messages from the Device setup \
+This step requires the following inputs: AWS access key ID, AWS secret access key and AWS session token. Here, the user need to press "Enter" to allow the default information as inputs. The other two important information are Greengrass Group name and Greengrass Core name. For example, user can choose the names as 'GreenGrass_pynq_Group' and 'GreenGrass_pynq_Core'. The following picture shows the messages from the Device setup:
 
 <div align="left">
   <img width="45%" height="50%" src="../doc/images/gg_core_installation.png">
@@ -183,7 +183,7 @@ $sudo python3 setup.py install
 
 
 3. **Creating GG_DPUPnem lambda function through AWS Lambda Console:** \
-In this step, user can load the example Lambda function DPU_Pnem.py through [AWS Lamda Console](https://us-west-2.console.aws.amazon.com/lambda). The steps for this part is given in [Create and package the Lambda function](https://docs.aws.amazon.com/greengrass/latest/developerguide/package.html). The command creates the zip file for uploading is given below: \
+In this step, user can load the example Lambda function DPU_Pnem.py through [AWS Lamda Console](https://us-west-2.console.aws.amazon.com/lambda). The steps for this part is given in [Create and package the Lambda function](https://docs.aws.amazon.com/greengrass/latest/developerguide/package.html). The command creates the zip file for uploading is given below:
 ```
 cd ~/COVID-XS/DPU_Lambda
 cp -r <Path of aws-greengrass-core-sdk-python>/greengrasssdk
@@ -224,7 +224,7 @@ g.
 4. **Add Lambda and Configure GG_DPU_Pnem as "Long-lived", "No Container" Lambda function in Greengrass Group** \
 In this step we add the Lambda function "GG_DPU_Pnem" to Greengrass Group 'GreenGrass_pynq_Group' as "No Container", "Long-lived" function running under root. Here we follow the steps given [Greengrass Documentation](https://docs.aws.amazon.com/greengrass/latest/developerguide/long-lived.html). \
 a. The Lambda function GG_DPU_Pnem is added to the Greengrass group. The configuration of GG_DPU_Pnem is available [here](../doc/images/GG_Lambda_Runtime_Setting.png) \
-b. To run the inference for COVID Prediction with 150x150 resized X-Ray images we use the following environment variables. \
+b. To run the inference for COVID Prediction with 150x150 resized X-Ray images we use the following environment variables.
 <div align="left">
   <img width="45%" height="50%" src="../doc/images/Lambda_Pnem3_env.png">
 </div>
@@ -254,7 +254,7 @@ Next, provide "Dp/in/tr" for the input of "Publish to Topic". Press the button "
     
 The above figure shows that the Lambda function is running to the Local Device ZCU104 to correctly predict the input X-Ray image "COVID_COVID-00006.jpg" as COVID. 
     
-7. **Running Lambda function using S3 and AWS API as Trigger** \    
+7. **Running Lambda function using S3 and AWS API as Trigger**    
 The Lambda function DP_PU_Pnem is attached with two Triggers shown in the following Figure.
 <div align="left">
   <img width="45%" height="50%" src="../doc/images/S3_API_Trigger.png">

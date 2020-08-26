@@ -207,7 +207,7 @@ $aws s3 cp  *labels.txt s3://covidxs
 
 
 
-1. **Create a dir '/dpu_ml_models' in Edge device for using in Lambda function**
+2. **Create a dir '/dpu_ml_models' in Edge device for using in Lambda function**
 ```
 The directory /dpu_ml_models will be used by the Greengrass process to access DPU setup files and Deep Learning Object files: 
 $sudo mkdir /dpu_ml_models
@@ -222,14 +222,14 @@ $sudo cp /home/xilinx/jupyter_notebooks/pynq-dpu/dpu.* /dpu_ml_models
 
 
 
-2. **Install boto3 in ZCU104**
+3. **Install boto3 in ZCU104**
 ```
 Boto3 is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python. To install it run:
 $sudo pip3 install boto3
 ```
 
 
-3. **Install Greengrass Core Python SDK:** \
+4. **Install Greengrass Core Python SDK:** \
 The AWS IoT [Greengrass Core Python SDK](https://github.com/aws/aws-greengrass-core-sdk-python/) is meant to be used by AWS Lambda functions running on an AWS IoT Greengrass Core. It also enables Lambda functions to invoke other Lambda functions deployed to the Greengrass Core, publish messages to the Greengrass Core and work with local Shadow service. 
 ```
 $cd ~xilinx
@@ -240,7 +240,7 @@ $sudo python3 setup.py install
 ```
 
 
-4. **Creating GG_DPUPnem lambda function through AWS Lambda Console:** \
+5. **Creating GG_DPUPnem lambda function through AWS Lambda Console:** \
 In this step, user can load the example Lambda function DPU_Pnem.py through [AWS Lamda Console](https://us-west-2.console.aws.amazon.com/lambda). The steps for this part is given in [Create and package the Lambda function](https://docs.aws.amazon.com/greengrass/latest/developerguide/package.html). The command creates the zip file for uploading is given below:
 
 ```
@@ -277,7 +277,7 @@ f. Create an alias for the function version:
 ```
 
 
-5. **Add Lambda and Configure GG_DPU_Pnem as "Long-lived", "No Container" Lambda function in Greengrass Group** \
+6. **Add Lambda and Configure GG_DPU_Pnem as "Long-lived", "No Container" Lambda function in Greengrass Group** \
 In this step we add the Lambda function "GG_DPU_Pnem" to Greengrass Group 'GreenGrass_pynq_Group' as "No Container", "Long-lived" function running under root. Here we follow the steps given [Greengrass Documentation](https://docs.aws.amazon.com/greengrass/latest/developerguide/long-lived.html). \
 a. The Lambda function GG_DPU_Pnem is added to the Greengrass group. The configuration of GG_DPU_Pnem is available [here](../doc/images/GG_Lambda_Runtime_Setting.png) \
 b. To run the inference for COVID Prediction with 150x150 resized X-Ray images we use the following environment variables.
@@ -285,7 +285,7 @@ b. To run the inference for COVID Prediction with 150x150 resized X-Ray images w
   <img width="45%" height="50%" src="../doc/images/Lambda_Pnem3_env.png">
 </div>
     
-6. **"Add Subscriptions" to the Greengrass group** \
+7. **"Add Subscriptions" to the Greengrass group** \
 Add two subscription to the Greengrass group as shown in the following figure
 <div align="left">
   <img width="45%" height="50%" src="../doc/images/GG_subscription.png">
@@ -293,14 +293,14 @@ Add two subscription to the Greengrass group as shown in the following figure
     
 
 
-7. **Deploy the Greengrass Group** \
+8. **Deploy the Greengrass Group** \
 After the Adding the subscriptions the Group to deployed by selecting the menu option "Action -> Deploy". \
 Once the group successfully deployed the ZCU104 device will show a running process similar to:
 **    root     17753 42.0  3.6 622964 74144 pts/0    Ssl+ 16:24   0:02 /usr/bin/python3.7 -u /greengrass/ggc/packages/1.10.2/runtime/python/lambda_runtime.py --handler=DPU_Pnem.function_handler**
 
 
     
-8. **Test the Greengrass Group** \
+9. **Test the Greengrass Group** \
 To Test the Greengrass group the steps click on the item "Test" under "AWS IoT" Console. Then provide the Subscription topic "DP/in" and Select "Display payloads as strings (more accurate)" option. Press the button "Subscribe To Topic". The following figure shows the above steps: 
 <div align="left">
   <img width="45%" height="50%" src="../doc/images/GG_test_subscription.png">

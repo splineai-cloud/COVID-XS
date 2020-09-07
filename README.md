@@ -41,7 +41,7 @@ DPU_Edge          | Contains the AWS Lambda functions for deplying the Pneumonia
 
 
 # Important Document Links
-In this note we have used the reference of the following other Documents: \
+In this note we have used the reference of the following other Documents:
 
 Document                         | Link
 :--------------------------------|--------------------------------

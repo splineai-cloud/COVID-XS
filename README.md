@@ -16,10 +16,46 @@
 **Date**: 01 June 2020
 
 # Introduction
-
-Coronavirus or COVID-19 Pandemic is an extraordinary Emergency Healthcare crisis in recent time with growing numbers of fatalities, expected to touch half a million deaths by Jun 2020. Currently, the widely used test method to detect COVID-19 is RT-PCR or Real-Time Polymerase Chain Reaction. Although RT-PCR is a standard diagnostic technique, it also has many drawbacks. RT_PCR has shown high-rates of false negatives, its process is time-consuming and costly. During this crisis, from many experiments, it has been found that Pneumonia and COVID-19 infection detection from the imaging e.g. CT Scan and X-Ray is very effective and produces greater insights. However, compared to CT Scan or Computed Tomography the use of Chest X-Ray imaging is much cheaper and less efficient. 
+ 
+Coronavirus or COVID-19 Pandemic is an extraordinary Emergency Healthcare crisis in recent time with large numbers of fatalities and longterm Health issue. The COVID-19 Pandemic also seriously hampered the social life and damaged the economy of almost 200 countries. Growing cooncern is that it'll remain major Healthcare issue moving forward to the year 2021. Currently, the widely used test method to detect COVID-19 is RT-PCR or Real-Time Polymerase Chain Reaction. Although RT-PCR is a standard diagnostic technique, it also has many drawbacks. RT_PCR has shown high-rates of false negatives, its process is time-consuming and costly. During this crisis, from many experiments, it has been found that Pneumonia and COVID-19 infection detection from the imaging e.g. CT Scan and X-Ray is very effective and produces greater insights. However, compared to CT Scan or Computed Tomography the use of Chest X-Ray imaging is much cheaper and less efficient. 
 
 We have developed a smart and scalable solution for Pneumonia and COVID-19 prediction system using [Vitis-AI](https://developer.xilinx.com/en/get-started/ai.html) and [AWS-IoT GreenGrass](https://aws.amazon.com/greengrass/) with Xilinx [ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) FPGA board as the Edge Device. This makes the solution highly scalable, extremely cheaper and mobile suitable for use in any Hospitals, Ambulance or Hospital-in-Wheels. However, our solution is not a production-ready solution, it primarily meant for helping Healthcare researchers to develop a radiology flow for better and seamless diagnosis of COVID-19.
+
+
+The COVID-XS open source directory has the following resources: 
+
+# Directory Listing
+
+Directory                        | Description
+:--------------------------------|--------------------------------
+code                             | Containing the python source code for the following (1) to train the four High performing Deep Learning models in Vitis-AI conda tensrflow environment, (2) to help prepare Pneumonia and COVID datasets (3) Quantization/Compilation of Deep Learning models for the Edge Device ZCU104 
+compile | Containing the output of Compilation steps that converts the Quantized Tensorflow model to Object model for running inference in ZCU104 FPGA
+dataset | This directory saves the Pneumonia data set from RSNA and COVID-19 data set from the open source respositories 
+doc     | Contains the images using in this documentation
+*.sh    | Script files automating the steps (1) train the Deep Learning models, (2) Quantize and (3) Compile for ZCU104
+COVID_demo        | Contains the ipynb files to demonstrate the accuracy of Deep Learning models and draw heatmap on Pneumonia/COVID-19 cases
+COVID_DPU_demo    | Contains the ipynb files to demonstrate the inference of Pneumonia/COVID-19 Deep Learning models in ZCU104 FPGA
+DPU_Edge          | Contains the AWS Lambda functions for deplying the Pneumonia/COVID-19 prediction inference in Edge Device through IoT Greengrass 
+
+
+# Important Document Links
+In this note we have used the reference of the following other Documents: \
+
+Document                         | Link
+:--------------------------------|--------------------------------
+[Vitis AI stack release 1.1](https://github.com/Xilinx/Vitis-AI)       |   https://github.com/Xilinx/Vitis-AI
+[Vitis AI User Guide UG1414 v1.1](https://www.xilinx.com/support/documentation/sw_manuals/vitis_ai/1_1/ug1414-vitis-ai.pdf)  | https://www.xilinx.com/support/documentation/sw_manuals/vitis_ai/1_1/ug1414-vitis-ai.pdf
+[Vitis AI Evaluation board - ZCU104](https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware) | https://www.xilinx.com/products/boards-and-kits/zcu104.html#hardware 
+[ZCU104 PYNQ 2.5 image file](http://www.pynq.io/board.html) | http://www.pynq.io/board.html
+[Document for Compiled Model to run in DPU (Deep Learning Processing Unit)](https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD) | https://github.com/Xilinx/Vitis-AI/tree/master/DPU-TRD
+[DPU-PYNQ Libray](https://github.com/Xilinx/DPU-PYNQ) | https://github.com/Xilinx/DPU-PYNQ
+[AWS IoT Greengrass Getting started Guide](https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html) | https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html
+[Module 2: Installing the AWS IoT Greengrass Core software](https://docs.aws.amazon.com/greengrass/latest/developerguide/module2.html) | https://docs.aws.amazon.com/greengrass/latest/developerguide/module2.html 
+[Module 3 (part 1): Lambda functions on AWS IoT Greengrass](https://docs.aws.amazon.com/greengrass/latest/developerguide/module3-I.html) | https://docs.aws.amazon.com/greengrass/latest/developerguide/module3-I.html
+[SageMakeNeo](https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html) | https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html
+
+
+# Deep Learning Models
 
 We have provided two sets of Deep Learning models for predicting Pneumonia and COVID-19 from Chest X-Rays: 
   1) Pnem1 - Pneumonia Detection model for 150x150 image dimension 
